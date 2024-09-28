@@ -1,0 +1,146 @@
+body, html {
+    background: #212529;
+    height: 100%;
+    margin: 0;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.s_button{
+    display:flex;
+    justify-content: center;
+}
+
+.board{
+    border: 1px solid black;
+    border-radius: 1vh;
+    padding: 10px;
+    background-color: whitesmoke;
+    text-align: left;
+    box-shadow: 0 10px 12px 0 rgb(0, 0, 0), 0 12px 20px 0 rgb(0, 0, 0);
+    transition: 0.25s;
+}
+
+.board:hover{
+    
+    box-shadow: 0 3px 8px 0 rgba(196, 196, 196, 0.562), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transition: 0.25s;
+}
+
+button{
+    box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: #04aa6d;
+    border: 1px solid black;
+    color:#fff;
+    height: 5vh;
+    transition: 0.25s;
+    border-radius: 1vh;
+    border:0px;
+}
+button:hover{
+    box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.457), 0 6px 20px 0 rgba(0, 0, 0, 0.457);
+    transition: 0.25s;
+    background-color: #41c092;
+    cursor:pointer;
+}
+
+input{
+    width:100%;
+}
+
+
+.register_board{
+    border: 1px solid black;
+    border-radius: 1vh;
+    padding: 10px;
+    background-color: whitesmoke;
+    text-align: center;
+    box-shadow: 0 10px 12px 0 rgb(0, 0, 0), 0 12px 20px 0 rgb(0, 0, 0);
+    transition: 0.25s;
+}
+
+.register_board:hover{
+    box-shadow: 0 3px 8px 0 rgba(196, 196, 196, 0.562), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transition: 0.25s;
+}
+
+img{
+    width: 5vh;
+    height: 5vh;
+}
+
+.social_presence{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.error{
+    border: 1px solid black;
+    border-radius: 1vh;
+    background-color: rgba(162, 98, 83,0.3);
+    text-align: center;
+    box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transition: 0.25s;
+}
+
+.error:hover{
+    box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.457), 0 6px 20px 0 rgba(0, 0, 0, 0.457);
+    transition: 0.25s;
+}
+
+.header{
+    color:#04aa6d;
+    margin-bottom: 10vh;
+}
+
+.header h1{
+    margin: 0vh;
+}
+.motto{
+    margin: 0%;
+}
+
+input{
+    border:2px solid #000000;
+    border-radius: 1vh;
+    outline: 0px;
+    transition: 0.15s;
+}
+input:focus{
+    border:2px solid #04aa6d;
+    transition: 0.15s;
+}
+
+.header h1:hover{
+    text-shadow: 0 0 1px #81e8a5, 0 0 1px #86feba;
+    transition:0.15s;
+}
+
+.find button{
+    box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: white;
+    border: 1px solid black;
+    color:black;
+    height: 5vh;
+    transition: 0.25s;
+    border-radius: 1vh;
+    border:0px;
+    margin:2vh;
+    margin-left: 0;
+    width:90%;
+}
+.find button:hover{
+    box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.457), 0 6px 20px 0 rgba(0, 0, 0, 0.457);
+    transition: 0.25s;
+    background-color: #41c092;
+    cursor:pointer;
+}
+
+.find{
+    margin-top: 50%;
+    padding: 10%;
+    width: 100%;
+}
