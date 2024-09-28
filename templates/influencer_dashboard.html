@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{name.capitalize()}}'s Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+</head>
+<body>
+    <div class="menu">
+        <div class="name-dashboard">
+        <h1 class="name">CNNCT💚<br><br>{{name.capitalize()}}'s </h1><br><h1>Dashboard  </h1><br>
+        </div>
+        <button class="active">Profile</button>
+        <br>
+        <form action="{{ url_for('find') }}" method="post">
+            <button type="submit">Find</button>
+            <input type="hidden" name="name" value="{{name}}">
+            <input type="hidden" name="id" value="{{id}}">
+        </form>
+        <form action="{{ url_for('stats') }}" method="post">
+            <button type="submit">Stats</button>
+            <input type="hidden" name="name" value="{{name}}">
+            <input type="hidden" name="id" value="{{id}}">
+        </form>
+        <form action="{{ url_for('index') }}" method="post">
+            <button type="submit" class="log_out_button">Logout</button>
+            <input type="hidden" name="log_out">
+            <input type="hidden" name='username' value={{name}}>
+        </form>
+    </div>
+     <hr>
+     <hr style="height:0px;width:0px;position:static;">
+     <div class="content">
+        <div class="image">
+            <img src="data:image/png;base64,{{ image }}" alt="image">
+            <br>
+            <h4>Edit</h4>
+            <form action="{{url_for('dashboard')}}" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" id="file">
+                <button type="submit" >Upload</button>
+                <input type="hidden" name="id" value="{{id}}">
+                <input type="hidden" name="username" value="{{name}}">
+                <input type="hidden" name="flag2">
+            </form>
+        </div>
+        <div class="rating_board">
+            <h4>Your Rating: {{rating}}</h4>
+        </div>
+        <div class="rating_board">
+            <h4>Your Bio: </h4>{{bio}}<br>
+            <form action="{{url_for('dashboard')}}" method="post">
+                <input type="text" name="edit" placeholder="Change Bio">
+                <br>
+                <button type="submit" style="background-color: #FCEBB6; autocomplete="off"">Edit</button>
+                <input type="hidden" name="id" value="{{id}}">
+                <input type="hidden" name="username" value="{{name}}">
+            </form>
+        </div>
+        <div class="active_ads">
+            <h4>Active Campaigns</h4>
+            {% for i in data %}
+            <form action="{{url_for('view_camp')}}" method="post">
+                <button type="submit">{{i[0].capitalize()}}</button>
+                <input type="hidden" name="id" value="{{id}}">
+                <input type="hidden" name="username" value="{{name}}">
+                <input type="hidden" name="camp_id" value="{{i[1]}}">
+            </form>
+            <form action="{{url_for('dashboard')}}" method="post">
+                <button type="submit">Completed</button>
+                <input type="hidden" name="id" value="{{id}}">
+                <input type="hidden" name="username" value="{{name}}">
+                <input type="hidden" name="camp_id" value="{{i[1]}}">
+                <input type="hidden" name='completed'>
+            </form>
+            {% endfor %}
+        </div>
+        
+     </div>
+     <div class="content_2" style="display:block;">
+        <div class = "requests" style="height:fit-content">
+            <h4>Requests</h4>
+                {% for i in data_requests %}
+                <div class="request">
+                <form action="{{url_for('view_camp')}}" method="post"  style="width:100%">
+                    <button type="submit">{{i[0]}}</button>
+                    <input type="hidden" name="id" value="{{id}}">
+                    <input type="hidden" name="username" value="{{name}}">
+                    <input type="hidden" name="camp_id" value="{{i[1]}}">
+                </form>
+                <form action="{{url_for('dashboard')}}" method="post" style="width:fit-content; display:inline;">
+                    <button type="submit" style="width:fit-content; display:inline;">Accept</button>
+                    <input type="hidden" name="id" value="{{id}}">
+                    <input type="hidden" name="username" value="{{name}}">
+                    <input type="hidden" name="accept" value="{{i[1]}}">
+                </form>
+                <form action="{{url_for('dashboard')}}" method="post" style="width:fit-content; display:inline;">
+                    <button type="submit" style="width:fit-content;display:inline;" class="log_out_button">Reject</button>
+                    <input type="hidden" name="id" value="{{id}}">
+                    <input type="hidden" name="username" value="{{name}}">
+                    <input type="hidden" name="reject" value="{{i[1]}}">
+                </form>
+                </div>
+                {% endfor %}
+         </div>
+         <br>
+         <div class = "requests">
+            <h4>Completed Compaigns</h4>
+                {% for i in data_completed %}
+                <div class="request">
+                <form action="{{url_for('view_camp')}}" method="post"  style="width:100%">
+                    <button type="submit">{{i[0]}}</button>
+                    <input type="hidden" name="id" value="{{id}}">
+                    <input type="hidden" name="username" value="{{name}}">
+                    <input type="hidden" name="camp_id" value="{{i[1]}}">
+                </form>
+                </div>
+                {% endfor %}
+         </div>
+     </div>
+</body>
+</html>

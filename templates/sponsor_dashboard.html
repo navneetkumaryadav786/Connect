@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{name}}'s Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+</head>
+<body>
+    <div class="menu">
+        <h1 class="name">CNNCT💚<br><br>{{name.capitalize()}}'s </h1><br><h1>Dashboard  </h1><br>
+        <button class="active">Profile</button>
+        <br>
+        <form action="{{ url_for('campaigns') }}" method="post">
+            <button type="submit">Campaigns</button>
+            <input type="hidden" name="id" value="{{id}}">
+            <input type="hidden" name="name" value="{{name}}">
+            <input type="hidden" name="flag" value="false">
+        </form>
+        <form action="{{ url_for('stats') }}" method="post">
+            <button type="submit">Stats</button>
+            <input type="hidden" name="name" value="{{name}}">
+            <input type="hidden" name="id" value="{{id}}">
+        </form>
+        <form action="{{ url_for('index') }}" method="get">
+            <button type="submit" class="log_out_button">Logout</button>
+        </form>
+    </div>
+     <hr>
+     <hr style="height:0px;width:0px;position:static;">
+     <div class="content">
+        <div class="active_ads">
+            <h4>Active Campaigns</h4>
+            {% for i in active %}
+            <form action="{{url_for('view_camp')}}" method="post">
+                <button type="submit">{{i[0].capitalize()}}</button>
+                <input type="hidden" name="id" value="{{id}}">
+                <input type="hidden" name="username" value="{{name}}">
+                <input type="hidden" name="camp_id" value="{{i[1]}}">
+            </form>
+            {% endfor %}
+        </div>
+        
+     </div>
+     <div class="content_2">
+        <div class = "requests">
+            <h4>Requests</h4>
+                {% for i in requests %}
+                <button type="submit" class="active">{{i[0].capitalize()}} | {{i[2].capitalize()}}</button>
+                <form action="{{url_for('dashboard')}}" method="post" style="width:fit-content; display:inline;">
+                    <button type="submit" style="width:fit-content; display:inline;">Accept</button>
+                    <input type="hidden" name="id" value="{{id}}">
+                    <input type="hidden" name="username" value="{{name}}">
+                    <input type="hidden" name="accept2" value="{{i[3]}}">
+                    <input type="hidden" name="inf_id" value="{{i[1]}}">
+                </form>
+                <form action="{{url_for('dashboard')}}" method="post" style="width:fit-content; display:inline;">
+                    <button type="submit" style="width:fit-content;display:inline;" class="log_out_button">Reject</button>
+                    <input type="hidden" name="id" value="{{id}}">
+                    <input type="hidden" name="username" value="{{name}}">
+                    <input type="hidden" name="reject2" value="{{i[3]}}">
+                    <input type="hidden" name="inf_id" value="{{i[1]}}">
+                </form>
+                {% endfor %}
+         </div>
+     </div>
+</body>
+</html>

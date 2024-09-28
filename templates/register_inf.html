@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infulencer Register</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+</head>
+<body>
+    <div class="back_ground">
+        <div class="header">
+            <h1>CONNECT</h1>
+            <div class = "motto">Connecting Brands with Influential Voices</div>
+        </div>
+        <h2 style="color:#ffff">Influencer Register</h2>
+        <div class="board">
+        <form action="{{url_for("index")}}" method="post" name="influencer">
+            <input type="hidden" name="role" value="influencer">
+            <p>Username</p>
+            <input type="text" autofocus name="username" required autocomplete="off" placeholder="Username">
+            <p>Password</p>
+            <input type="password" name="password" required placeholder="Password">
+            <p>Bio</p>
+            <input type="text" name="bio" required placeholder="Bio" autocomplete="off">
+            <p>Social Presence</p>
+            <div class="social_presence">
+            <img src="{{ url_for("static",filename="yt.png") }}">
+            <lable>Youtube</lable>
+            <input type="checkbox" style="width: auto;">
+            <img src="{{ url_for("static",filename="insta.png") }}">
+            <lable>Instagram</lable>
+            <input type="checkbox" style="width: auto;">
+            <img src="{{ url_for("static",filename="fb.png") }}">
+            <lable>Facebook</lable>
+            <input type="checkbox" style="width: auto;">
+            <img src="{{ url_for("static",filename="x.png") }}">
+            <lable>Twitter</lable>
+            <input type="checkbox" style="width: auto;">
+            </div>
+            <br>
+            <div class="s_button">
+                <button type="submit">Register</button>
+            </div>
+        </form>
+        
+        </div>
+        <br>
+        <div class = "register_board">
+            Already have an account?
+            <br>
+            <a href={{ url_for("index") }}>Login</a>
+        </div>
+    </div>
+</body>
+</html>

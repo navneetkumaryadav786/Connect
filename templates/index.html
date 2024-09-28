@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+</head>
+<body>
+    <div class="back_ground">
+        <div class="header">
+            <h1>CONNECT</h1>
+            <div class = "motto">Connecting Brands with Influential Voices</div>
+        </div>
+        {% if flag %}
+        <div class="error">
+            <h4 style="color:#ffff">Username Not available</h4>
+        </div>
+        {%endif%}
+        {% if flag2 %}
+        <div class="succes">
+            <h4 style="color:#ffff">Registration Succesfull!!</h4>
+        </div>
+        {%endif%}
+        <h2 style="color:#ffff">Login</h2>
+        <div class="board">
+        <form action="{{url_for("dashboard")}}" method="post">
+            <p>Username</p>
+            <input type="text" autofocus name="username" required autocomplete="off" placeholder="Username">
+            <p>Password</p>
+            <input type="password" name="password" required placeholder="Password">
+            <br>
+            <br>
+            <div class="s_button">
+                <button type="submit">LOGIN</button>
+                <input type="hidden" name="log_in">
+            </div>
+        </form>
+        </div>
+        <br>
+        <div class = "register_board">
+            New to connect? Create new account as
+            <br>
+            <a href={{ url_for("register_inf") }}>Influencer</a> OR 
+            <a href={{ url_for("register_spo")}}>Sponsor</a>
+        </div>
+    </div>
+</body>
+</html>

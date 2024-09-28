@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+</head>
+<body>
+    <div class="menu">
+        <div class="name-dashboard">
+        <h1 class="name">CNNCT💚<br><br>Admins's </h1><br><h1>Dashboard  </h1><br>
+        </div>
+        <button class="active">Profile</button>
+        <br>
+        <form action="{{ url_for('find_adm') }}" method="post">
+            <button type="submit">Find</button>
+            <input type="hidden" name="name" value={{name}}>
+        </form>
+        <form action="{{ url_for('stats') }}" method="post">
+            <button type="submit">Stats</button>
+            <input type="hidden" name="name" value={{name}}>
+        </form>
+        <form action="{{ url_for('index') }}" method="get">
+            <button type="submit" class="log_out_button">Logout</button>
+        </form>
+    </div>
+    <hr>
+    <hr style="height: 0px; width: 0px; position: static;">
+    <div class="content">
+        
+        <h1 style="color: #ffff; justify-content: center;">Active Campaigns</h1>
+        {% for i in data %}
+        <div class="request">
+            <form action="{{ url_for('view_camp') }}" method="post" style="width: 100%;">
+                <button type="submit">{{ i[1].capitalize() }}</button>
+                <input type="hidden" name="camp_id" value="{{i[0]}}">
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="content" display="block">
+        
+        <h1 style="color: #ffff; justify-content: center;">All Flagged Campaigns/Users</h1>
+        {% for i in flagged_users %}
+        <div class="request">
+                <button class="active" type="submit">{{ i[1].capitalize() }}</button>
+        </div>
+        {% endfor %}
+        {% for i in flagged_campaigns %}
+        <br>
+        <div class="request">
+            <form action="{{ url_for('view_camp') }}" method="post" style="width: 100%;">
+                <button type="submit">{{ i[1].capitalize() }}</button>
+                <input type="hidden" name="camp_id" value="{{i[0]}}">
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+    
+    
+</body>
+</html>

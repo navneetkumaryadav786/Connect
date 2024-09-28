@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>viewCampaigns</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+</head>
+<body>
+    <div class="back_ground">
+        <div class="header">
+            <h1>CONNECT</h1>
+            <div class = "motto">Connecting Brands with Influential Voices</div>
+        </div>
+        <h2 style="color:#ffff">Campaign View</h2>
+        <div class="board">
+        <p>Name:{{data[0][1].capitalize()}}</p>
+        <p>Budget:₹{{data[0][3]}}</p>
+        <p>Hosted by:{{host[0][0].capitalize()}}</p>
+        <p>Doing:{{inf[0][0].capitalize()}}</p>
+    </div>
+</body>
+</html>

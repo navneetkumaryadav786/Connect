@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stats</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+</head>
+<body>
+    <div class="back_ground">
+        <div class="header">
+            <h1>CONNECT</h1>
+            <div class = "motto">Connecting Brands with Influential Voices</div>
+        </div>
+        <h2 style="color:#ffff">Stats for {{name.capitalize()}}</h2>
+
+            {% if stats %}
+            <div class="board">
+                <ul>
+                    {% for key, value in stats.items() %}
+                        <li>{{ key }}: {{ value }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+                <div>
+                    <img src="data:image/png;base64,{{ img_base64 }}" alt="Stats Graph" style="height:300px;width:500px;border-radius:1vh;">
+                </div>
+            {% else %}
+                <p>No stats available.</p>
+            {% endif %}
+
+    </form>
+</body>
+</html>
