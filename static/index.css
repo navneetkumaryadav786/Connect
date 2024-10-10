@@ -13,6 +13,8 @@ body, html {
 }
 
 .board{
+    width : 90%;
+    max-width : fit-content;
     border: 1px solid black;
     border-radius: 1vh;
     padding: 10px;
